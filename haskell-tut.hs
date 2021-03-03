@@ -48,4 +48,3 @@ trueAndFalse = True && False
 trueOrFalse :: Bool
 trueOrFalse = True || False
 notTrue = not(True)
-
