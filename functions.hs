@@ -28,3 +28,12 @@ whatAge x = "Nothin important"
 factorial :: Int -> Int 
 factorial 0 = 1
 factorial n = n * factorial (n -1)
+
+prodFact n = product [1..n] -- factorial easy
+
+isOdd :: Int -> Bool 
+isOdd n
+    | n `mod` 2 == 0 = False
+    | otherwise = True
+
+isEven n = n `mod` 2 == 0
