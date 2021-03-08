@@ -62,11 +62,36 @@ getListItems (x : []) = "You list starts with " ++ show x
 getListItems (x : y : []) = "You list contains " ++ show x ++ " and " ++ show y
 getListItems (x : xs) = "The 1st item is " ++ show x ++ " and the rest are" ++ show xs
 
-getFirstItem :: String -> String 
+getFirstItem :: String -> String
 getFirstItem [] = "Empty String"
-getFirstItem all@(x:xs) = "The first letter in "++ all ++ " is " ++ [x]
+getFirstItem all@(x : xs) = "The first letter in " ++ all ++ " is " ++ [x]
 
 -- using map
-times4 :: Int -> Int 
+times4 :: Int -> Int
 times4 x = x * 4
-listTimes4 = map times4 [1,2,3,4,56,870]
+
+listTimes4 = map times4 [1, 2, 3, 4, 56, 870]
+
+-- recursive
+multBy4 :: [Int] -> [Int]
+multBy4 [] = []
+multBy4 (x : xs) = times4 x : multBy4 xs -- x is the first list item an xs is the rest of list items
+
+areStringsEq :: [Char] -> [Char] -> Bool
+areStringsEq [] [] = True
+areStringsEq (x : xs) (y : ys) = x == y && areStringsEq xs ys
+areStringsEq _ _ = False
+
+doMult :: (Int -> Int) -> Int -- passing function as param
+doMult func = func 3
+
+num3Times4 = doMult times4
+
+getAddFunc :: Int -> (Int -> Int) -- returing func
+getAddFunc x y = x + y
+
+add3 = getAddFunc 3
+
+fourPlus3 = add3 4
+
+threePlusList = map add3 [1,2,3,4]
